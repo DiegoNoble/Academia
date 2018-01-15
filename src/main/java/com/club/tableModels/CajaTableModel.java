@@ -20,7 +20,7 @@ import javax.swing.table.AbstractTableModel;
 public class CajaTableModel extends AbstractTableModel {
 
     //nome da coluna da table
-    private final String[] colunas = new String[]{"Fecha", "Rubro", "Sector", "Concepto", "Entrada", "Salida", "Saldo"};
+    private final String[] colunas = new String[]{"Data", "Conta", "Setor", "Conceito", "Entrada", "Saida", "Saldo"};
     //lista para a manipulacao do objeto
     private List<Caja> listCajas;
 

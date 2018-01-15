@@ -54,7 +54,7 @@ public class SociosInactivosTableModel extends AbstractTableModel {
             case 3:
                 return c.getCategoria();
             case 4:
-                return c.getCobrador();
+                return "";
             case 5:
                 return c.getSituacion();
             case 6:
@@ -83,7 +83,7 @@ public class SociosInactivosTableModel extends AbstractTableModel {
             case 3:
                 return Categoria.class;
             case 4:
-                return Cobrador.class;
+                return String.class;
             case 5:
                 return String.class;
             case 6:

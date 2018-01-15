@@ -189,7 +189,7 @@ public class CategoriaFrame extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setResizable(true);
-        setTitle("Control de Socios - Club Sarandi Universitario"); // NOI18N
+        setTitle("Categorías"); // NOI18N
         setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 

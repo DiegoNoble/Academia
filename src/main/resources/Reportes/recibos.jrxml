@@ -20,16 +20,12 @@
      tbsocio.`DIRECCION` AS tbsocio_DIRECCION,
      tbsocio.`NOMBRE` AS tbsocio_NOMBRE,
      tbsocio.`IDCATEGORIA` AS tbsocio_IDCATEGORIA,
-     tbcategoria.`DEFINICION` AS tbcategoria_DEFINICION,
-     tbmensualidades.`LANZAMIENTO` AS tbmensualidades_LANZAMIENTO,
-     tbcobrador.`NOMBRE` AS tbcobrador_NOMBRE
+     tbcategoria.`DEFINICION` AS tbcategoria_DEFINICION
 FROM
      `tbsocio` tbsocio INNER JOIN `tbmensualidades` tbmensualidades ON tbsocio.`ID` = tbmensualidades.`ID_SOCIO`
      INNER JOIN `tbcategoria` tbcategoria ON tbsocio.`IDCATEGORIA` = tbcategoria.`ID`
-     INNER JOIN `tbcobrador` tbcobrador ON tbsocio.`IDCOBRADOR` = tbcobrador.`ID`
-     AND tbcobrador.`ID` = tbmensualidades.`ID_COBRADOR`
 WHERE
-     tbmensualidades.`LANZAMIENTO` = $P{emision}]]>
+      tbmensualidades.`ID` = $P{emision}]]>
 	</queryString>
 	<field name="tbmensualidades_ID" class="java.lang.Long"/>
 	<field name="tbmensualidades_ID_SOCIO" class="java.lang.Integer"/>
@@ -39,8 +35,6 @@ WHERE
 	<field name="tbsocio_NOMBRE" class="java.lang.String"/>
 	<field name="tbsocio_IDCATEGORIA" class="java.lang.Integer"/>
 	<field name="tbcategoria_DEFINICION" class="java.lang.String"/>
-	<field name="tbmensualidades_LANZAMIENTO" class="java.lang.Integer"/>
-	<field name="tbcobrador_NOMBRE" class="java.lang.String"/>
 	<group name="tbmensualidades_ID">
 		<groupExpression><![CDATA[$F{tbmensualidades_ID}]]></groupExpression>
 		<groupHeader>
@@ -128,13 +122,6 @@ WHERE
 						<font fontName="SansSerif"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{tbsocio_NOMBRE}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="302" y="65" width="48" height="20" uuid="a0a9d0eb-834a-4ee6-b10e-8820dfff3b62"/>
-					<textElement>
-						<font fontName="SansSerif"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{tbcobrador_NOMBRE}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="45" y="148" width="67" height="20" uuid="e4b2ab23-4c7e-47f6-ae02-4629a5b4565c"/>

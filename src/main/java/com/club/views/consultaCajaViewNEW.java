@@ -47,7 +47,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
             listMovCaja = new ArrayList<>();
             modelo = new CajaTableModel(listMovCaja);
             tblCaja.setModel(modelo);
-            tblCaja.getColumn("Fecha").setCellRenderer(new MeDateCellRenderer());
+            tblCaja.getColumn("Data").setCellRenderer(new MeDateCellRenderer());
             int[] anchos = {50, 100, 80, 300, 20, 20, 20};
 
             for (int i = 0; i < tblCaja.getColumnCount(); i++) {
@@ -140,7 +140,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Consulta Movimientos Caja"); // NOI18N
+        jLabel1.setText("Consulta fluxo de caixa"); // NOI18N
         jPanel1.add(jLabel1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -178,7 +178,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
 
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        btnBuscar.setText("Buscar"); // NOI18N
+        btnBuscar.setText("Procurar"); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -197,7 +197,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel6.add(jLabel9, gridBagConstraints);
 
-        jLabel17.setText("Ingrese el período del filtro"); // NOI18N
+        jLabel17.setText("Filtro"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -262,7 +262,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(txtSalida, gridBagConstraints);
 
-        jLabel14.setText("Total Salida $:"); // NOI18N
+        jLabel14.setText("Total Saida $:"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -271,7 +271,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(jLabel14, gridBagConstraints);
 
-        jLabel6.setText("Resultado del Pedíodo");
+        jLabel6.setText("Resultado do Pedíodo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -300,7 +300,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(txtEntrada1, gridBagConstraints);
 
-        jTabbedPane1.addTab("Resumen del día o Período", jPanel4);
+        jTabbedPane1.addTab("Resumo do Día/Período", jPanel4);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -310,7 +310,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(jTabbedPane1, gridBagConstraints);
 
-        btnInformeResumen1.setText("Generar informe con resumen de movimientos");
+        btnInformeResumen1.setText("Relatorio resumo de movimientos");
         btnInformeResumen1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInformeResumen1ActionPerformed(evt);
@@ -324,7 +324,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(btnInformeResumen1, gridBagConstraints);
 
-        btnInformeGastos1.setText("Generar informe de gastos agrupados por Rubros");
+        btnInformeGastos1.setText("Relatorio de gastos agrupados por Conta");
         btnInformeGastos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInformeGastos1ActionPerformed(evt);
@@ -338,7 +338,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(btnInformeGastos1, gridBagConstraints);
 
-        btnInformeIngresos1.setText("Generar informe de Ingresos agrupados por Rubros");
+        btnInformeIngresos1.setText("Relatorio de Ingresos agrupados por conta");
         btnInformeIngresos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInformeIngresos1ActionPerformed(evt);
@@ -352,7 +352,7 @@ public class consultaCajaViewNEW extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(btnInformeIngresos1, gridBagConstraints);
 
-        jButton1.setText("Informe Sectores");
+        jButton1.setText("Relatorio de Setores");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

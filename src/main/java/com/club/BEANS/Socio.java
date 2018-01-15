@@ -5,6 +5,7 @@
 package com.club.BEANS;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Basic;
@@ -28,8 +29,9 @@ import javax.persistence.TemporalType;
 @Table(name = "tbsocio")
 
 public class Socio implements Serializable {
+
     private static final long serialVersionUID = 1L;
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
@@ -53,6 +55,8 @@ public class Socio implements Serializable {
     private String ciudad;
     @Column(name = "CI")
     private String ci;
+    @Column(name = "cpf")
+    private String cpf;
     @Column(name = "FECHAINGRESO")
     @Temporal(TemporalType.DATE)
     private Date fechaingreso;
@@ -66,18 +70,16 @@ public class Socio implements Serializable {
     private String celular;
     @Column(name = "EMAIL")
     private String email;
-    @Column(name = "FOTO")
-    private String foto;
+    @Lob
+    private byte[] foto;
     @Column(name = "HISTORIA")
     private String historia;
-    @JoinColumn(name = "IDCOBRADOR", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Cobrador Cobrador;    
+
     @JoinColumn(name = "IDCATEGORIA", referencedColumnName = "ID")
-    @ManyToOne(optional=false)
+    @ManyToOne(optional = false)
     private Categoria Categoria;
     @Lob
-    @Column(name="huella", columnDefinition="blob")
+    @Column(name = "huella", columnDefinition = "blob")
     private byte[] huella;
     private Integer tamano;
     private Integer calidad;
@@ -106,15 +108,17 @@ public class Socio implements Serializable {
         this.calidad = calidad;
     }
 
-
     public Socio() {
     }
 
     public Socio(Integer id) {
         this.id = id;
     }
+    
+    
 
-    public Socio(Integer id, String nombre, String direccion, Date fechanacimiento, String sexo, String estadocivil, String profesion, String nacionalidad, String ciudad, String ci, Date fechaingreso, String situacion, String barrio, String telefono, String email, String foto, String historia, com.club.BEANS.Cobrador Cobrador, com.club.BEANS.Categoria Categoria) {
+    public Socio(Integer id, String nombre, String direccion, Date fechanacimiento, String sexo, String estadocivil, String profesion, String nacionalidad, String ciudad, String ci, 
+            Date fechaingreso, String situacion, String barrio, String telefono, String email, byte[] foto, String historia, com.club.BEANS.Categoria Categoria) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -132,17 +136,26 @@ public class Socio implements Serializable {
         this.email = email;
         this.foto = foto;
         this.historia = historia;
-        this.Cobrador = Cobrador;
         this.Categoria = Categoria;
     }
 
-       public Integer getId() {
+    public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -256,7 +269,6 @@ public class Socio implements Serializable {
         this.email = email;
     }
 
-
     public String getHistoria() {
         return historia;
     }
@@ -265,22 +277,12 @@ public class Socio implements Serializable {
         this.historia = historia;
     }
 
-
-    public String getFoto() {
+    public byte[] getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(byte[] foto) {
         this.foto = foto;
-    }
-
-    
-    public com.club.BEANS.Cobrador getCobrador() {
-        return Cobrador;
-    }
-
-    public void setCobrador(com.club.BEANS.Cobrador Cobrador) {
-        this.Cobrador = Cobrador;
     }
 
     public com.club.BEANS.Categoria getCategoria() {
@@ -320,15 +322,10 @@ public class Socio implements Serializable {
         }
         return true;
     }
-    
-    
 
     @Override
     public String toString() {
-        return id+", "+nombre;
+        return id + ", " + nombre;
     }
 
-   
-
-    
 }

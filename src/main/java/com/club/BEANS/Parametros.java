@@ -51,7 +51,7 @@ public class Parametros implements Serializable {
     @Column(name = "api_url_crear")
     private String apiUrlCrear;
     private String emailPadron;
-    private Integer toleranciaRecibosPenientes;
+    private Integer toleranciaDiasAtraso;
     @JoinColumn(name = "id_rubroPagoCuotasCampEco", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Rubro rubroPagoCuotasCampEco;
@@ -63,6 +63,12 @@ public class Parametros implements Serializable {
     private String MySql_Path;
     private String nombreBasesDatos;
 
+    @JoinColumn(name = "id_rubroVentas", referencedColumnName = "ID")
+    @ManyToOne(optional = false)
+    private Rubro rubroVentas;
+    private Integer idWebCam;
+    
+    
     public Parametros() {
     }
 
@@ -154,14 +160,15 @@ public class Parametros implements Serializable {
         this.urlConsultaCobranzasCobrosYa = urlConsultaCobranzasCobrosYa;
     }
 
-    public Integer getToleranciaRecibosPenientes() {
-        return toleranciaRecibosPenientes;
+    public Integer getToleranciaDiasAtraso() {
+        return toleranciaDiasAtraso;
     }
 
-    public void setToleranciaRecibosPenientes(Integer toleranciaRecibosPenientes) {
-        this.toleranciaRecibosPenientes = toleranciaRecibosPenientes;
+    public void setToleranciaDiasAtraso(Integer toleranciaDiasAtraso) {
+        this.toleranciaDiasAtraso = toleranciaDiasAtraso;
     }
 
+   
     public Rubro getRubroPagoCuotasCampEco() {
         return rubroPagoCuotasCampEco;
     }
@@ -194,6 +201,24 @@ public class Parametros implements Serializable {
         this.sectorCampEco = sectorCampEco;
     }
 
+    public Rubro getRubroVentas() {
+        return rubroVentas;
+    }
+
+    public void setRubroVentas(Rubro rubroVentas) {
+        this.rubroVentas = rubroVentas;
+    }
+
+    public Integer getIdWebCam() {
+        return idWebCam;
+    }
+
+    public void setIdWebCam(Integer idWebCam) {
+        this.idWebCam = idWebCam;
+    }
+
+    
+    
     
     
 }

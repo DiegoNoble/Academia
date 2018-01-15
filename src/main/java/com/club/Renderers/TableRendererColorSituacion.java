@@ -7,6 +7,8 @@ package com.club.Renderers;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -29,14 +31,18 @@ public class TableRendererColorSituacion extends DefaultTableCellRenderer {
         //setBackground(Color.white);//color de fondo
         table.setForeground(Color.black);//color de texto
         //Si la celda corresponde a una fila con estado FALSE, se cambia el color de fondo a rojo
-        if (table.getValueAt(row, ColReferencia).equals("Pago")) {
+        if (value != null) {
+
+            Date formatoRecibido = (Date) value;
+            String toReturn = new SimpleDateFormat("dd/MM/yyyy").format(formatoRecibido);
+            super.setValue(toReturn);
 
             //setBackground(Color.blue);
             setForeground(Color.BLUE);
             setBorder(new LineBorder(Color.BLUE));
 
-        } else if (table.getValueAt(row, ColReferencia).equals("Pendiente de Pago")) {
-
+        } else if (value == null) {
+            //super.setBackground(Color.red);
             setForeground(Color.red);
 
         }

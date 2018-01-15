@@ -18,7 +18,7 @@ import javax.swing.table.AbstractTableModel;
 public class SocioTableModel extends AbstractTableModel {
 
     //nome da coluna da table
-    private final String[] colunas = new String[]{"Cód.", "Nombre", "Categoria", "Situación", "Cel"};
+    private final String[] colunas = new String[]{"Cód.", "Nome", "CPF","Categoria", "Situação", "Cel"};
     //lista para a manipulacao do objeto
     private List<Socio> listSocios;
 
@@ -49,10 +49,12 @@ public class SocioTableModel extends AbstractTableModel {
             case 1:
                 return c.getNombre();
             case 2:
-                return c.getCategoria();
+                return c.getCpf();
             case 3:
-                return c.getSituacion();
+                return c.getCategoria();
             case 4:
+                return c.getSituacion();
+            case 5:
                 return c.getCelular();
             default:
                 return null;
@@ -74,10 +76,12 @@ public class SocioTableModel extends AbstractTableModel {
             case 1:
                 return String.class;
             case 2:
-                return Categoria.class;
-            case 3:
                 return String.class;
+            case 3:
+                return Categoria.class;
             case 4:
+                return String.class;
+            case 5:
                 return String.class;
             default:
                 return null;

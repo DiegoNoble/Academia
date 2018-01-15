@@ -44,10 +44,12 @@ public class Main {
                 new PrintStream(
                         new FileOutputStream("logs/System.err/" + agora + ".txt", true)));
     }
-
+    
+   
     public static void main(String[] args) {
 
         try {
+            System.out.println(System.getProperty("java.library.path"));
             frameLogin login = new frameLogin();
             //FormPrincipal login = new FormPrincipal();
 

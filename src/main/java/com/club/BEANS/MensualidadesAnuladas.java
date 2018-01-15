@@ -46,16 +46,11 @@ public class MensualidadesAnuladas implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAnulacion;
     @Column(name = "PAGO")
-    private String pago;
-    @Basic(optional = false)
-    @Column(name = "LANZAMIENTO")
-    private int lanzamiento;
+    private Boolean pago;
+
     @JoinColumn(name = "ID_SOCIO", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Socio socio;
-    @JoinColumn(name = "ID_COBRADOR", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Cobrador cobrador;
 
     public MensualidadesAnuladas() {
     }
@@ -64,15 +59,13 @@ public class MensualidadesAnuladas implements Serializable {
         this.id = id;
     }
 
-    public MensualidadesAnuladas(Integer id, Double valor, Date fechaVencimiento, Date fechaPago, String pago, int lanzamiento, Socio tbsocio, Cobrador tbcobrador) {
+    public MensualidadesAnuladas(Integer id, Double valor, Date fechaVencimiento, Date fechaPago, Boolean pago, Socio tbsocio) {
         this.id = id;
         this.valor = valor;
         this.fechaVencimiento = fechaVencimiento;
         this.fechaPago = fechaPago;
         this.pago = pago;
-        this.lanzamiento = lanzamiento;
         this.socio = tbsocio;
-        this.cobrador = tbcobrador;
     }
 
     public Integer getId() {
@@ -122,22 +115,13 @@ public class MensualidadesAnuladas implements Serializable {
     public void setFechaAnulacion(Date fechaAnulacion) {
         this.fechaAnulacion = fechaAnulacion;
     }
-    
 
-    public String getPago() {
+    public Boolean getPago() {
         return pago;
     }
 
-    public void setPago(String pago) {
+    public void setPago(Boolean pago) {
         this.pago = pago;
-    }
-
-    public int getLanzamiento() {
-        return lanzamiento;
-    }
-
-    public void setLanzamiento(int lanzamiento) {
-        this.lanzamiento = lanzamiento;
     }
 
     public Socio getSocio() {
@@ -146,14 +130,6 @@ public class MensualidadesAnuladas implements Serializable {
 
     public void setSocio(Socio socio) {
         this.socio = socio;
-    }
-
-    public Cobrador getCobrador() {
-        return cobrador;
-    }
-
-    public void setCobrador(Cobrador cobrador) {
-        this.cobrador = cobrador;
     }
 
     @Override

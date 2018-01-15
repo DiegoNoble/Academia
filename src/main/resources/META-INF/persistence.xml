@@ -26,6 +26,10 @@
     <class>com.club.BEANS.Numeros</class>
     <class>com.club.BEANS.SectoresFuncionario</class>
     <class>com.club.BEANS.VentaCampEco</class>
+    <class>com.club.BEANS.Articulo</class>
+    <class>com.club.BEANS.ArticulosVenta</class>
+    <class>com.club.BEANS.Unidad</class>
+    <class>com.club.BEANS.Venta</class>
     <properties>
       <property name="hibernate.cache.provider_class" value="org.hibernate.ejb.HibernatePersistence"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>

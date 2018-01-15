@@ -7,6 +7,7 @@ package com.club.DAOs;
 import com.club.BEANS.Cobrador;
 import com.club.BEANS.Mensualidades;
 import com.club.BEANS.Socio;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -89,7 +90,7 @@ public class MensualidadesDAO extends DaoGenerico {
 
         Boolean verifica = null;
 
-        Query qr = em.createQuery("SELECT COUNT(*) FROM Mensualidades AS m WHERE m.socio.id =:socio AND m.pago='Pendiente de Pago'");
+        Query qr = em.createQuery("SELECT COUNT(*) FROM Mensualidades AS m WHERE m.socio.id =:socio AND m.pago=false");
         qr.setParameter("socio", socio.getId());
         Long numeroVencimientos = (Long) qr.getSingleResult();
 
@@ -104,12 +105,11 @@ public class MensualidadesDAO extends DaoGenerico {
 
     }
 
-    public List BuscaPorCobradorSituacionVencimiento(Cobrador cobrador, String situcion, Date desde, Date hasta) {
+    public List BuscaPorSituacionVencimiento(Boolean situcion, Date desde, Date hasta) {
 
         List<Mensualidades> toReturn = null;
 
-        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.cobrador =:cobrador and m.pago =:situcion and m.fechaVencimiento between :desde and :hasta");
-        qr.setParameter("cobrador", cobrador);
+        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.pago =:situcion and m.fechaVencimiento between :desde and :hasta");
         qr.setParameter("situcion", situcion);
         qr.setParameter("desde", desde);
         qr.setParameter("hasta", hasta);
@@ -123,7 +123,7 @@ public class MensualidadesDAO extends DaoGenerico {
 
         List<Mensualidades> toReturn = null;
 
-        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.socio= :socio and m.pago='Pendiente de Pago' order by id asc");
+        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.socio= :socio and m.pago=false order by id asc");
         qr.setParameter("socio", socio);
         toReturn = qr.getResultList();
 
@@ -131,12 +131,11 @@ public class MensualidadesDAO extends DaoGenerico {
 
     }
 
-    public List BuscaPorCobradorVencimiento(Cobrador cobrador, Date desde, Date hasta) {
+    public List BuscaPorVencimiento(Date desde, Date hasta) {
 
         List<Mensualidades> toReturn = null;
 
-        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.cobrador =:cobrador  and m.fechaVencimiento between :desde and :hasta");
-        qr.setParameter("cobrador", cobrador);
+        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.fechaVencimiento between :desde and :hasta");
         qr.setParameter("desde", desde);
         qr.setParameter("hasta", hasta);
         toReturn = qr.getResultList();
@@ -145,13 +144,12 @@ public class MensualidadesDAO extends DaoGenerico {
 
     }
 
-    public List BuscaPorCobradorSituacionVencimiento(Cobrador cobrador, Date vencimiento, Collection situacion) {
+    public List BuscaPorSituacionVencimiento(Date vencimiento, Collection situacion) {
 
         List<Mensualidades> toReturn = null;
 
-        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.cobrador =:cobrador  and m.fechaVencimiento =:vencimiento "
+        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.fechaVencimiento =:vencimiento "
                 + "and m.pago in :situacion");
-        qr.setParameter("cobrador", cobrador);
         qr.setParameter("vencimiento", vencimiento);
         qr.setParameter("situacion", situacion);
         toReturn = qr.getResultList();
@@ -172,7 +170,7 @@ public class MensualidadesDAO extends DaoGenerico {
 
     }
 
-    public List<Mensualidades> BuscaPorCobradorSituacion(Cobrador cobrador, String situcion) {
+    public List<Mensualidades> BuscaPorCobradorSituacion(Cobrador cobrador, Boolean situcion) {
 
         List<Mensualidades> toReturn = null;
 
@@ -180,6 +178,20 @@ public class MensualidadesDAO extends DaoGenerico {
         qr.setParameter("cobrador", cobrador);
         qr.setParameter("situcion", situcion);
         toReturn = qr.getResultList();
+
+        return toReturn;
+
+    }
+
+    public List<Mensualidades> BuscaAtrasados() {
+
+        Date hoy = new Date();
+
+        Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.socio.situacion = 'Activo' and m.fechaVencimiento <:hoy "
+                + "and m.id = (select max(id) from Mensualidades as mm where m.socio = mm.socio) group by m.socio order by m.fechaVencimiento");
+        //Query qr = em.createQuery("FROM Mensualidades AS m WHERE m.socio.situacion = 'Activo' and m.fechaVencimiento <:hoy");
+        qr.setParameter("hoy", hoy);
+        List toReturn = qr.getResultList();
 
         return toReturn;
 

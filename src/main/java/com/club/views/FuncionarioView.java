@@ -437,7 +437,7 @@ public final class FuncionarioView extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Control de Socios - Club Sarandi Universitario"); // NOI18N
+        setTitle("Funcionarios"); // NOI18N
         setPreferredSize(new java.awt.Dimension(900, 700));
         setRequestFocusEnabled(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());

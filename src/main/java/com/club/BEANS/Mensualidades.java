@@ -42,16 +42,12 @@ public class Mensualidades implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaPago;
     @Column(name = "PAGO")
-    private String pago;
-    @Basic(optional = false)
-    @Column(name = "LANZAMIENTO")
-    private int lanzamiento;
+    private Boolean pago = false;
+    
     @JoinColumn(name = "ID_SOCIO", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Socio socio;
-    @JoinColumn(name = "ID_COBRADOR", referencedColumnName = "ID")
-    @ManyToOne(optional = false)
-    private Cobrador cobrador;
+
     private Boolean enviado = false;
     private String situacionTalonCobrosYa;
     @Column(name = "nro_talon")
@@ -72,15 +68,13 @@ public class Mensualidades implements Serializable {
         this.id = id;
     }
 
-    public Mensualidades(Integer id, Double valor, Date fechaVencimiento, Date fechaPago, String pago, int lanzamiento, Socio tbsocio, Cobrador tbcobrador) {
+    public Mensualidades(Integer id, Double valor, Date fechaVencimiento, Date fechaPago, Boolean pago,  Socio tbsocio) {
         this.id = id;
         this.valor = valor;
         this.fechaVencimiento = fechaVencimiento;
         this.fechaPago = fechaPago;
         this.pago = pago;
-        this.lanzamiento = lanzamiento;
         this.socio = tbsocio;
-        this.cobrador = tbcobrador;
     }
 
     public Integer getId() {
@@ -115,20 +109,12 @@ public class Mensualidades implements Serializable {
         this.fechaPago = fechaPago;
     }
 
-    public String getPago() {
+    public Boolean getPago() {
         return pago;
     }
 
-    public void setPago(String pago) {
+    public void setPago(Boolean pago) {
         this.pago = pago;
-    }
-
-    public int getLanzamiento() {
-        return lanzamiento;
-    }
-
-    public void setLanzamiento(int lanzamiento) {
-        this.lanzamiento = lanzamiento;
     }
 
     public Socio getSocio() {
@@ -137,14 +123,6 @@ public class Mensualidades implements Serializable {
 
     public void setSocio(Socio socio) {
         this.socio = socio;
-    }
-
-    public Cobrador getCobrador() {
-        return cobrador;
-    }
-
-    public void setCobrador(Cobrador cobrador) {
-        this.cobrador = cobrador;
     }
 
     public Boolean getEnviado() {
@@ -233,4 +211,10 @@ public class Mensualidades implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Mensalidade " + id + ", socio=" + socio;
+    }
+
+    
 }

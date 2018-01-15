@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2018-01-15T14:53:35 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recibos" pageWidth="637" pageHeight="864" columnWidth="637" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="45bd5008-d52b-4447-b2cb-df575d72871b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="academia.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="recibo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select s.nombre, s.cpf, m.id,m.valor, m.fecha_pago, m.fecha_vencimiento, c.definicion as categoria from
+tbsocio s, tbmensualidades m, tbcategoria c where s.id = m.id_socio and s.idcategoria = c.id
+and m.id =  $P{recibo} ]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="valor" class="java.lang.Double"/>
+	<field name="fecha_pago" class="java.sql.Date"/>
+	<field name="fecha_vencimiento" class="java.sql.Date"/>
+	<field name="categoria" class="java.lang.String"/>
+	<group name="tbmensualidades_ID">
+		<groupExpression><![CDATA[$F{tbmensualidades_ID}]]></groupExpression>
+		<groupHeader>
+			<band height="215">
+				<rectangle>
+					<reportElement x="4" y="8" width="629" height="200" uuid="008e0254-00c9-442a-86de-0e92d304e7d0"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="9" y="13" width="620" height="190" uuid="ba62a469-cbec-4e5d-ac14-8846e92a5fe8">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+				</rectangle>
+				<textField>
+					<reportElement mode="Opaque" x="162" y="24" width="90" height="26" forecolor="#000000" backcolor="#D4D4D4" uuid="7c5184d2-2257-43fc-b8f4-b7c5b6a0e91b"/>
+					<textElement>
+						<font fontName="SansSerif" size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="12" y="19" width="118" height="34" uuid="deeef8bc-b860-42c7-9a1d-f77c94c78d91"/>
+					<textElement>
+						<font fontName="Arial" size="29" isBold="true"/>
+					</textElement>
+					<text><![CDATA[RECIBO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="132" y="24" width="30" height="26" uuid="a10fa8fc-bd5c-4e04-b41a-25b9e4a8111b"/>
+					<textElement>
+						<font fontName="Arial" size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nº]]></text>
+				</staticText>
+				<textField pattern="R$#,##0.##;R$-#,##0.##">
+					<reportElement mode="Opaque" x="330" y="23" width="110" height="27" forecolor="#000000" backcolor="#D4D4D4" uuid="034db82d-2862-431f-a8cf-db9a63dd794b"/>
+					<textElement>
+						<font fontName="SansSerif" size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="250" y="24" width="80" height="26" uuid="d62d199a-788b-41c5-a3b2-bd1093ea177b"/>
+					<textElement>
+						<font fontName="Arial" size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="121" width="239" height="20" uuid="9106da2e-b8a9-4aa1-82b3-bffc5464e998"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<text><![CDATA[Vencimento de mensalidade, data:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="12" y="62" width="39" height="20" uuid="960d23f6-8c81-46ef-9c66-9125e93865a9"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<text><![CDATA[Socio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="91" width="139" height="20" uuid="fc9320bb-e801-40c7-b664-872b9030da0e"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<text><![CDATA[Categoría do socio:]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="59" y="62" width="270" height="19" forecolor="#000000" backcolor="#D4D4D4" uuid="0ad231ea-b712-4903-8cf9-bb38ed00deda"/>
+					<textElement>
+						<font fontName="SansSerif" size="15"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="341" y="62" width="39" height="20" uuid="3dda54e9-82aa-4947-964e-bccafbb34f70"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<text><![CDATA[CPF]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="390" y="62" width="219" height="19" forecolor="#000000" backcolor="#D4D4D4" uuid="23900bcb-0345-4a86-a02c-6fec7b138996"/>
+					<textElement>
+						<font fontName="SansSerif" size="15"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement mode="Opaque" x="252" y="121" width="110" height="19" forecolor="#000000" backcolor="#D4D4D4" uuid="09063a8e-52c4-40b3-981b-d85a322aa636"/>
+					<textElement>
+						<font fontName="SansSerif" size="15"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fecha_vencimiento}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="150" y="92" width="211" height="19" forecolor="#000000" backcolor="#D4D4D4" uuid="90f53aa0-9d1e-43ad-b314-d4de9ec6a1a0"/>
+					<textElement>
+						<font fontName="SansSerif" size="15"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="440" y="24" width="70" height="26" uuid="c1184e16-72ad-4a54-91cf-59b258a46d53"/>
+					<textElement>
+						<font fontName="Arial" size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DATA]]></text>
+				</staticText>
+				<textField pattern="R$#,##0.##;R$-#,##0.##">
+					<reportElement mode="Opaque" x="510" y="23" width="110" height="27" forecolor="#000000" backcolor="#D4D4D4" uuid="9a3c3320-b304-4868-baa4-0c42db6f23e6"/>
+					<textElement>
+						<font fontName="SansSerif" size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fecha_pago}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="12" y="178" width="607" height="20" uuid="5e65535b-b4cb-4ea3-ada0-0b2b62238147"/>
+					<textElement>
+						<font size="15"/>
+					</textElement>
+					<text><![CDATA[Asinatura....................................................................................................................................]]></text>
+				</staticText>
+				<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+					<reportElement x="430" y="87" width="159" height="88" uuid="eced1d91-6f74-40d7-ad7f-f9f142c19eda"/>
+					<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+				</image>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

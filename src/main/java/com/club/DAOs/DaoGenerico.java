@@ -17,7 +17,7 @@ public class DaoGenerico {
         this.em = JPAUtil.getInstance().getEntityManager();
     }
 
-    public void Salvar(Object obj) throws Exception {
+    public void Salvar(Object obj) {
 
         em.persist(obj);
         em.getTransaction().commit();
@@ -27,7 +27,7 @@ public class DaoGenerico {
 
     public void SalvarList(List list) throws Exception {
         for (Object obj : list) {
-            em.persist(obj);
+            em.merge(obj);
             em.flush();
             em.clear();
         }
@@ -35,7 +35,7 @@ public class DaoGenerico {
         em.close();
     }
 
-    public void Actualizar(Object obj) throws Exception {
+    public void Actualizar(Object obj) {
         em.merge(obj);
         em.getTransaction().commit();
         em.close();

@@ -28,8 +28,6 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
 
     private void inicio() {
         comboCobradores();
-        comboRubros();
-        comboSectores();
         txtEmail.setText(parametros.getCasilla_email());
         txtPswEmail.setText(parametros.getPsw_email());
         txtPswSms.setText(parametros.getPsw_SMS());
@@ -40,12 +38,11 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
         cbCobrosYa.setSelectedItem(parametros.getCobradorCobrosYa());
         txtApiUrlCrear.setText(parametros.getApiUrlCrear());
         txtUrlConsultaCobranzas.setText(parametros.getUrlConsultaCobranzasCobrosYa());
-        cbRubro.setSelectedItem(parametros.getRubroPagoCuotasCampEco());
-        cbSector.setSelectedItem(parametros.getSectorCampEco());
         txtMysqlPath.setText(parametros.getMySql_Path());
         txtNombreBasedeDatos.setText(parametros.getNombreBasesDatos());
+        txtIdWebCam.setText(parametros.getIdWebCam().toString());
 
-        txttoleranciaRecibosPendientes.setText(parametros.getToleranciaRecibosPenientes().toString());
+        txtToleranciaDiasAtraso.setText(parametros.getToleranciaDiasAtraso().toString());
     }
 
     void comboCobradores() {
@@ -54,31 +51,6 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
         List<Cobrador> cobradores = cobradorDAO.BuscaTodos(Cobrador.class);
         for (Cobrador cobrador : cobradores) {
             cbCobrosYa.addItem(cobrador);
-        }
-    }
-
-    void comboSectores() {
-        cbSector.removeAllItems();
-        SectorDAO sectorDAO = new SectorDAO();
-        List<Sectores> sectores = sectorDAO.BuscaTodos(Sectores.class);
-        for (Sectores sector : sectores) {
-            cbSector.addItem(sector);
-        }
-    }
-
-    public void comboRubros() {
-
-        try {
-
-            RubroDAO rubroDAO = new RubroDAO();
-            List<Rubro> listRubros = rubroDAO.BuscaTodos(Rubro.class);
-            for (Rubro rubro : listRubros) {
-                cbRubro.addItem(rubro);
-            }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar comboboxes: " + ex);
-            ex.printStackTrace();
         }
     }
 
@@ -95,10 +67,9 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
         txtApiUrlCrear.setEnabled(true);
         txtUsuarioSMS.setEnabled(true);
         txtEmailPadron.setEnabled(true);
-        txttoleranciaRecibosPendientes.setEnabled(true);
+        txtIdWebCam.setEnabled(true);
+        txtToleranciaDiasAtraso.setEnabled(true);
         cbCobrosYa.setEnabled(true);
-        cbRubro.setEnabled(true);
-        cbSector.setEnabled(true);
         btnCancelar.setEnabled(true);
         btnGuardar.setEnabled(true);
         btnEditar.setEnabled(false);
@@ -108,19 +79,18 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
     private void deshabilitaCampos() {
         txtMysqlPath.setEnabled(false);
         txtNombreBasedeDatos.setEnabled(false);
-        cbRubro.setEnabled(false);
         txtEmail.setEnabled(false);
         txtPswEmail.setEnabled(false);
         txtPswSms.setEnabled(false);
         txtTokenCobrosYa.setEnabled(false);
         txtUrlPost.setEnabled(false);
+        txtIdWebCam.setEnabled(false);
         txtUrlConsultaCobranzas.setEnabled(false);
         txtApiUrlCrear.setEnabled(false);
         txtUsuarioSMS.setEnabled(false);
         txtEmailPadron.setEnabled(false);
-        txttoleranciaRecibosPendientes.setEnabled(false);
+        txtToleranciaDiasAtraso.setEnabled(false);
         cbCobrosYa.setEnabled(false);
-        cbSector.setEnabled(false);
         btnCancelar.setEnabled(false);
         btnGuardar.setEnabled(false);
         btnEditar.setEnabled(true);
@@ -156,15 +126,13 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         txtUrlConsultaCobranzas = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txttoleranciaRecibosPendientes = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        cbRubro = new javax.swing.JComboBox();
+        txtToleranciaDiasAtraso = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtNombreBasedeDatos = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         txtMysqlPath = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        cbSector = new javax.swing.JComboBox();
+        jLabel19 = new javax.swing.JLabel();
+        txtIdWebCam = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         btnEditar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -244,10 +212,10 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel2.add(jLabel7, gridBagConstraints);
 
-        jLabel9.setText("Si socio no tiene mail, envia a:");
+        jLabel9.setText("ID Web Cam");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel2.add(jLabel9, gridBagConstraints);
 
@@ -353,42 +321,21 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel2.add(txtUrlConsultaCobranzas, gridBagConstraints);
 
-        jLabel16.setText("Tolerancia recibos pendientes");
+        jLabel16.setText("Tolerancia dias atraso");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel2.add(jLabel16, gridBagConstraints);
 
-        txttoleranciaRecibosPendientes.setEnabled(false);
+        txtToleranciaDiasAtraso.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(txttoleranciaRecibosPendientes, gridBagConstraints);
-
-        jLabel3.setText("Sector campaña economica");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(jLabel3, gridBagConstraints);
-
-        cbRubro.setEnabled(false);
-        cbRubro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbRubroActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(cbRubro, gridBagConstraints);
+        jPanel2.add(txtToleranciaDiasAtraso, gridBagConstraints);
 
         jLabel17.setText("Nombre base de datos");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -422,26 +369,21 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel2.add(txtMysqlPath, gridBagConstraints);
 
-        jLabel4.setText("Rubro pago cuotas campaña economica");
+        jLabel19.setText("Si socio no tiene mail, envia a:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(jLabel4, gridBagConstraints);
+        jPanel2.add(jLabel19, gridBagConstraints);
 
-        cbSector.setEnabled(false);
-        cbSector.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbSectorActionPerformed(evt);
-            }
-        });
+        txtIdWebCam.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel2.add(cbSector, gridBagConstraints);
+        jPanel2.add(txtIdWebCam, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -516,11 +458,10 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
             parametros.setApiUrlCrear(txtApiUrlCrear.getText());
             parametros.setEmailPadron(txtEmailPadron.getText());
             parametros.setCobradorCobrosYa((Cobrador) cbCobrosYa.getSelectedItem());
-            parametros.setToleranciaRecibosPenientes(Integer.parseInt(txttoleranciaRecibosPendientes.getText()));
-            parametros.setRubroPagoCuotasCampEco((Rubro) cbRubro.getSelectedItem());
+            parametros.setToleranciaDiasAtraso(Integer.parseInt(txtToleranciaDiasAtraso.getText()));
             parametros.setMySql_Path(txtMysqlPath.getText());
+            parametros.setIdWebCam(Integer.parseInt(txtIdWebCam.getText()));
             parametros.setNombreBasesDatos(txtNombreBasedeDatos.getText());
-            parametros.setSectorCampEco((Sectores) cbSector.getSelectedItem());
             parametrosDAO = new ParametrosDAO();
             parametrosDAO.Actualizar(parametros);
         } catch (Exception ex) {
@@ -534,21 +475,11 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void cbRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRubroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbRubroActionPerformed
-
-    private void cbSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSectorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbSectorActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox cbCobrosYa;
-    private javax.swing.JComboBox cbRubro;
-    private javax.swing.JComboBox cbSector;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -559,9 +490,8 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
@@ -571,14 +501,15 @@ public final class ParametrosView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtApiUrlCrear;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailPadron;
+    private javax.swing.JTextField txtIdWebCam;
     private javax.swing.JTextField txtMysqlPath;
     private javax.swing.JTextField txtNombreBasedeDatos;
     private javax.swing.JTextField txtPswEmail;
     private javax.swing.JTextField txtPswSms;
     private javax.swing.JTextField txtTokenCobrosYa;
+    private javax.swing.JTextField txtToleranciaDiasAtraso;
     private javax.swing.JTextField txtUrlConsultaCobranzas;
     private javax.swing.JTextField txtUrlPost;
     private javax.swing.JTextField txtUsuarioSMS;
-    private javax.swing.JTextField txttoleranciaRecibosPendientes;
     // End of variables declaration//GEN-END:variables
 }

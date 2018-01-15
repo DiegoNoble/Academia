@@ -80,7 +80,7 @@ public class GeneraTalonCobrosYa extends javax.swing.JInternalFrame {
         }
         mensualidadesDAO = new MensualidadesDAO();
         listMensualidades.clear();
-        listMensualidades.addAll(mensualidadesDAO.BuscaPorCobradorSituacionVencimiento(cobradorCobrosYa, dpVencimiento.getDate(), situacionRecibo));
+        listMensualidades.addAll(mensualidadesDAO.BuscaPorSituacionVencimiento(dpVencimiento.getDate(), situacionRecibo));
         tblModelMensualidades.fireTableDataChanged();
     }
 

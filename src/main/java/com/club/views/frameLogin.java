@@ -2,15 +2,16 @@ package com.club.views;
 
 import com.club.BEANS.Usuario;
 import com.club.DAOs.UsuarioDAO;
-import com.club.control.utilidades.JPAUtil;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.util.Iterator;
-import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class frameLogin extends javax.swing.JFrame {
 
     UsuarioDAO usuarioDAO;
+    Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Imagenes/SmallLogo.png"));
 
     public frameLogin() {
         initComponents();
@@ -42,14 +43,14 @@ public class frameLogin extends javax.swing.JFrame {
         txtPass = new javax.swing.JPasswordField();
         jPanel4 = new javax.swing.JPanel();
         btnOk = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sis. Control de Clubes -- DNSoft .-");
+        setTitle("Sistema para academias-- DNSoft .-");
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/400dpiLogo.png")).getImage());
         setPreferredSize(new java.awt.Dimension(350, 250));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
@@ -68,7 +69,7 @@ public class frameLogin extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        jLabel2.setText("Nombre"); // NOI18N
+        jLabel2.setText("Nome"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -76,7 +77,7 @@ public class frameLogin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel3.add(jLabel2, gridBagConstraints);
 
-        jLabel4.setText("Contraseña"); // NOI18N
+        jLabel4.setText("Senha"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -131,7 +132,7 @@ public class frameLogin extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
-        btnOk.setText("Ingresar otro Usuario"); // NOI18N
+        btnOk.setText("Ingresar"); // NOI18N
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOkActionPerformed(evt);
@@ -143,26 +144,6 @@ public class frameLogin extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 20;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(btnOk, gridBagConstraints);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/portero.jpg"))); // NOI18N
-        jButton1.setText("Ingreso de Portero");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setIconTextGap(-3);
-        jButton1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 1;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel4.add(jButton1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -224,18 +205,9 @@ public class frameLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPassKeyPressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        txtNombre.setText("Portero");
-        txtPass.setText("Portero");
-        btnOkActionPerformed(null);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOk;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

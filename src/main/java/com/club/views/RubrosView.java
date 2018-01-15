@@ -168,7 +168,7 @@ public final class RubrosView extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Control de Socios - Club Sarandi Universitario"); // NOI18N
+        setTitle("Contas"); // NOI18N
         setPreferredSize(new java.awt.Dimension(800, 600));
         setRequestFocusEnabled(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -180,7 +180,7 @@ public final class RubrosView extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Rubros"); // NOI18N
+        jLabel1.setText("Contas"); // NOI18N
         jPanel1.add(jLabel1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -257,7 +257,7 @@ public final class RubrosView extends javax.swing.JInternalFrame {
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        jLabel4.setText("Cod. Referencia"); // NOI18N
+        jLabel4.setText("Cod."); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -292,7 +292,7 @@ public final class RubrosView extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(txtValor, gridBagConstraints);
 
-        chValorFijo.setText("Valor fijo");
+        chValorFijo.setText("Valor fixo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -300,7 +300,7 @@ public final class RubrosView extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(chValorFijo, gridBagConstraints);
 
-        jLabel5.setText("Nombre"); // NOI18N
+        jLabel5.setText("Nome"); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -318,7 +318,7 @@ public final class RubrosView extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(txtCodRef, gridBagConstraints);
 
-        jTabbedPane1.addTab("Datos", jPanel3);
+        jTabbedPane1.addTab("Dados", jPanel3);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -329,7 +329,7 @@ public final class RubrosView extends javax.swing.JInternalFrame {
 
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        btnNuevo.setText("Nuevo");
+        btnNuevo.setText("Novo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);

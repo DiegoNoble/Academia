@@ -62,7 +62,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Consulta Movimientos Caja" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Consulta fluxo de caixa" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -140,7 +140,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnBuscar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Procurar" noResource="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
@@ -163,7 +163,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ingrese el per&#xed;odo del filtro" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Filtro" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -228,8 +228,8 @@
             <Container class="javax.swing.JPanel" name="jPanel4">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Resumen del d&#xed;a o Per&#xed;odo">
-                    <Property name="tabTitle" type="java.lang.String" value="Resumen del d&#xed;a o Per&#xed;odo"/>
+                  <JTabbedPaneConstraints tabName="Resumo do D&#xed;a/Per&#xed;odo">
+                    <Property name="tabTitle" type="java.lang.String" value="Resumo do D&#xed;a/Per&#xed;odo"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -258,7 +258,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Total Salida $:" noResource="true"/>
+                    <Property name="text" type="java.lang.String" value="Total Saida $:" noResource="true"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -268,7 +268,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Resultado del Ped&#xed;odo"/>
+                    <Property name="text" type="java.lang.String" value="Resultado do Ped&#xed;odo"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -302,7 +302,7 @@
         </Container>
         <Component class="org.jasper.viewer.components.JasperRunnerButton" name="btnInformeResumen1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Generar informe con resumen de movimientos"/>
+            <Property name="text" type="java.lang.String" value="Relatorio resumo de movimientos"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInformeResumen1ActionPerformed"/>
@@ -315,7 +315,7 @@
         </Component>
         <Component class="org.jasper.viewer.components.JasperRunnerButton" name="btnInformeGastos1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Generar informe de gastos agrupados por Rubros"/>
+            <Property name="text" type="java.lang.String" value="Relatorio de gastos agrupados por Conta"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInformeGastos1ActionPerformed"/>
@@ -328,7 +328,7 @@
         </Component>
         <Component class="org.jasper.viewer.components.JasperRunnerButton" name="btnInformeIngresos1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Generar informe de Ingresos agrupados por Rubros"/>
+            <Property name="text" type="java.lang.String" value="Relatorio de Ingresos agrupados por conta"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInformeIngresos1ActionPerformed"/>
@@ -341,7 +341,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Informe Sectores"/>
+            <Property name="text" type="java.lang.String" value="Relatorio de Setores"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
